@@ -21,7 +21,7 @@ def predict():
     image_array = np.array(image) / 255.0
     image_array = np.expand_dims(image_array, axis=0)
 
-    prediction = model.predict(image_array)[0][0]
+    prediction = model(image_array, training=False).numpy()[0][0]
 
     if prediction > 0.5:
         result = "Dog 🐶"
